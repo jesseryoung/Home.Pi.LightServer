@@ -1,0 +1,21 @@
+[Unit]
+Description=Home.Pi.LightServer
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+ExecStart=docker run --rm \
+    --pull always \
+    -p 5000:5000 \
+    -v /home/pi/home.pi.lightserver/lightserver.clock.json:/config/lightserver.json \
+    --device /dev/spidev0.0 \
+    jesseryoung/home.pi.lightserver:latest
+
+StandardOutput=journal
+StandardError=journal
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

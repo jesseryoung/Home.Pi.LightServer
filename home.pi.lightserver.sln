@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F5B60EB0-B60A-47EE-965E-34185E2FD884}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Home.Pi.LightServer", "src\Home.Pi.LightServer\Home.Pi.LightServer.csproj", "{184B9C46-4EC8-4689-8BD8-A0DD19DBAB09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{184B9C46-4EC8-4689-8BD8-A0DD19DBAB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{184B9C46-4EC8-4689-8BD8-A0DD19DBAB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{184B9C46-4EC8-4689-8BD8-A0DD19DBAB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{184B9C46-4EC8-4689-8BD8-A0DD19DBAB09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{184B9C46-4EC8-4689-8BD8-A0DD19DBAB09} = {F5B60EB0-B60A-47EE-965E-34185E2FD884}
+	EndGlobalSection
+EndGlobal
