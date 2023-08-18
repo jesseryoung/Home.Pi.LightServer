@@ -2,6 +2,8 @@
 Description=Home.Pi.LightServer
 After=network.target
 
+Requires=docker.service
+
 [Service]
 Type=simple
 User=pi
