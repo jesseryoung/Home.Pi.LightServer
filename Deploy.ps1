@@ -3,6 +3,10 @@ param (
     [Parameter(Mandatory)]
     [string]
     $ServerName,
+    [Parameter(Mandatory)]
+    [string]
+    [ValidateSet("lightserver.clock.json", "lightserver.lightbar.json")]
+    $Config,
     [Parameter()]
     [string]
     $User = "pi"
@@ -41,7 +45,7 @@ foreach($service in Get-ChildItem ./systemd)
 Write-Host "Deploying...."
 ssh $User@$serverAddress rm -rf $RemoteDirectory `
     && ssh $User@$serverAddress mkdir $RemoteDirectory `
-    && scp -r -o user=$User ./configs/* $serverAddress`:$RemoteDirectory/ `
+    && scp -r -o user=$User ./configs/$Config $serverAddress`:$RemoteDirectory/lightserver.json `
     && scp -r -o user=$User ./systemd/* $serverAddress`:$RemoteDirectory/ `
     && ssh $User@$serverAddress chmod +x $RemoteDirectory/*.service `
     && ssh $User@$serverAddress sudo ln -sf $RemoteDirectory/*.service /etc/systemd/system/
