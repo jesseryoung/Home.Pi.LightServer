@@ -1,3 +1,4 @@
+
 namespace Home.Pi.LightServer.Animations;
 
 internal class AnimationController
@@ -5,12 +6,20 @@ internal class AnimationController
     private readonly IServiceProvider serviceProvider;
     private readonly ILogger<AnimationController> logger;
     private TaskCompletionSource newAnimationAvailable = new();
-    private Type? currentAnimationType = typeof(ClockAnimation);
+    private Type? currentAnimationType;
 
-    public AnimationController(IServiceProvider serviceProvider, ILogger<AnimationController> logger)
+    public AnimationController(IServiceProvider serviceProvider, ILogger<AnimationController> logger, LightServerConfiguration configuration)
     {
         this.serviceProvider = serviceProvider;
         this.logger = logger;
+
+        this.currentAnimationType = configuration.LayoutType switch
+        {
+            LayoutType.Clock => typeof(ClockAnimation),
+            LayoutType.LightBar => typeof(LightBarAnimation),
+            LayoutType.Invalid => typeof(LightBarAnimation),
+            _ => typeof(LightBarAnimation)
+        };
     }
 
     public async Task Run(CancellationToken cancellationToken)

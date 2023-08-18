@@ -43,6 +43,10 @@ internal class ConsoleLightController : ILightController
         {
             this.DrawClock();
         }
+        else if (this.options.LayoutType == LayoutType.LightBar)
+        {
+            this.DrawLightBar();
+        }
         return Task.CompletedTask;
     }
     private void DrawClock()
@@ -58,6 +62,17 @@ internal class ConsoleLightController : ILightController
                 canvas.SetPixel(x, y, new Color(this.lights[i].R, this.lights[i].G, this.lights[i].B));
                 i++;
             }
+        }
+        AnsiConsole.Clear();
+        AnsiConsole.Write(canvas);
+    }
+
+    private void DrawLightBar()
+    {
+        var canvas = new Canvas(this.TotalLights, 10);
+        for (var i = 0; i < this.TotalLights; i++)
+        {
+            canvas.SetPixel(i, 4, new Color(this.lights[i].R, this.lights[i].G, this.lights[i].B));
         }
         AnsiConsole.Clear();
         AnsiConsole.Write(canvas);

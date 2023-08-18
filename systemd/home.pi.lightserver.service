@@ -9,7 +9,7 @@ Group=pi
 ExecStart=docker run --rm \
     --pull always \
     -p 5000:5000 \
-    -v /home/pi/home.pi.lightserver/lightserver.clock.json:/config/lightserver.json \
+    -v /home/pi/home.pi.lightserver/lightserver.lightbar.json:/config/lightserver.json \
     --device /dev/spidev0.0 \
     jesseryoung/home.pi.lightserver:latest
 

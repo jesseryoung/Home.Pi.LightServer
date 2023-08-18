@@ -19,5 +19,6 @@ internal class ClockLayoutOptions
 internal enum LayoutType
 {
     Invalid = 0,
-    Clock = 1
+    Clock = 1,
+    LightBar = 2
 }

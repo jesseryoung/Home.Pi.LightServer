@@ -1,5 +1,5 @@
 {
-    "LayoutType": "clock",
+    "LayoutType": "LightBar",
     "TotalLights": 833,
     "MaxBrightness": 1.0,
     "ClockLayout": {

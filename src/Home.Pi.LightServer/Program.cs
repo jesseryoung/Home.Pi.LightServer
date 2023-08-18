@@ -34,6 +34,7 @@ builder
         return config;
     })
     .AddScoped<ClockAnimation>()
+    .AddScoped<LightBarAnimation>()
     .AddHostedService<AnimationService>();
 
 

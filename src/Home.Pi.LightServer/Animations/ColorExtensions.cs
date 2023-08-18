@@ -43,14 +43,12 @@ internal static class ColorExtensions
     }
 
 
-    public static Color[] Transition(this Color startColor, int transitionSteps)
+    public static Color[] Transition(this Color startColor, Color endColor, int transitionSteps)
     {
-        var end = startColor.RandomOtherColor();
-
         return Enumerable
             .Range(0, transitionSteps)
             .Select(e => (double)e / transitionSteps)
-            .Select(e => GetTransitionStep(startColor, end, e))
+            .Select(e => GetTransitionStep(startColor, endColor, e))
             .ToArray();
     }
 
