@@ -33,7 +33,7 @@ internal class LightBarAnimation : Animation
 
     private async Task LightRunAnimation((int light, Color color)[] transitions, CancellationToken cancellationToken)
     {
-        var transitionTime = TimeSpan.FromSeconds(5);
+        var transitionTime = TimeSpan.FromSeconds(1);
         var sw = Stopwatch.StartNew();
         using var timer = new PeriodicTimer(TimeSpan.FromSeconds(.05));
 
@@ -51,6 +51,8 @@ internal class LightBarAnimation : Animation
 
     private async Task BreathAnimation((int light, Color color)[] transitions, CancellationToken cancellationToken)
     {
+        const double minBreathBrightness = 0.25;
+
         var animationLength = TimeSpan.FromSeconds(3);
         var timePerBreath = TimeSpan.FromSeconds(1);
         var sw = Stopwatch.StartNew();
@@ -60,7 +62,7 @@ internal class LightBarAnimation : Animation
         {
             var elapsed = sw.Elapsed;
             var x = elapsed / timePerBreath * 2 * Math.PI;
-            var brightness = ((Math.Cos(x) + 1.0) / 2.0 * .5) + .5;
+            var brightness = ((Math.Cos(x) + 1.0) / 2.0 * (1 - minBreathBrightness)) + minBreathBrightness;
             this.lightController.SetLights(transitions.Select(light => (light.light, light.color.WithBrightness(brightness))).ToArray());
             await this.lightController.Update();
 

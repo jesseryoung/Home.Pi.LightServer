@@ -47,7 +47,8 @@ app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader())
 
 var animationTypeMap = new Dictionary<string, Type>()
 {
-    { "clock", typeof(ClockAnimation) }
+    { "clock", typeof(ClockAnimation) },
+    { "lightbar", typeof(LightBarAnimation)}
 };
 
 app.MapGet("startAnimation/{animationTypeName}", (AnimationController controller, string animationTypeName) =>
